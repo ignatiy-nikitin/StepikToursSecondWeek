@@ -9,7 +9,7 @@ from tours.data import tours, departures
 class MainView(View):
     def get(self, request):
         context = {
-            'tours': random.sample(list(tours.values()), 6)
+            'tours': {tour_id: tours[tour_id] for tour_id in random.sample(list(tours), 6)}
         }
         return render(request, 'tours/index.html', context)
 
